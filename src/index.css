@@ -1,10 +1,103 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Custome properties: edit this part only to change common element */
+:root {
+  --ff-primary: 'Roboto Mono', monospace;
+  --ff-secondary: 'IBM Plex Mono', monospace;
+  --ff-default: 'Roboto Mono', monospace, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif; 
+
+  --fw-reg: 300;
+  --fw-bold-med: 500;
+  --fw-bold: 700;
+
+  --clr-red: #FF3131;
+  --clr-dark: #17202A;
+  --clr-light: #fff;
+  --clr-yellow: #FFAA33;
+
+  --fs-h1: 3rem;
+  --fs-h2: 2.25rem;
+  --fs-h3: 1.25rem;
+  --fs-h4: 0.95rem;
+  --fs-body: 1rem;
+  --fs-small: 0.85rem
+}
+
+@media (min-width: 900px) {
+  :root {
+    --fs-h1: 3.5rem;
+    --fs-h2: 2.85rem;
+    --fs-h3: 1.5rem;
+    --fs-h4: 1.25rem;
+    --fs-body: 1.125rem;
+    --fs-small: 0.95rem;
+  }
+
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-body);
+  color: var(--clr-dark);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography */ 
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.1;
+  margin: 0;
+}
+
+h1 { font-size: var(--fs-h1);}
+h2 { font-size: var(--fs-h2);}
+h3 { font-size: var(--fs-h3);}
+
+/* section custome style */
+
+
+.section__title {
+  font-size: var(--fs-h2);
+  margin-bottom: 0.5em;
+}
+
+.section-subtitle {
+  margin: 0;
+  font-size: var(--fs-h3);
+  /* font-family: var(--ff-secondary); */
+}
+
+/* section custome button */
+.section__btn {
+  text-decoration: none;
+  background-color: var(--clr-light);
+  font-weight: var(--fw-bold-med);
+  color: var(--clr-dark);
+  margin-right: 1em;
+}
+
+.section__btn:hover {
+  background-color: var(--clr-red);
+  color: var(--clr-light);
 }
 
 code {
