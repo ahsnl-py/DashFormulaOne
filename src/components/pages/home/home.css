@@ -10,7 +10,6 @@
 
 .container__res-list {
     max-width: 100%;
-    /* border: 1px solid red; */
     margin-bottom: 1em;
 }
 
@@ -103,13 +102,6 @@ li.list__item {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
 }
 
-
-
-.nav__items {
-    /* padding: 0.5em; */
-
-}
-
 button {
     border: none;
     cursor: pointer;
@@ -125,10 +117,9 @@ button.item__tab {
 .activate,
 button.item__tab:hover {
     background-color: #ddd;
-    font-size: 0.9em;
+    font-size: 0.8em;
     
 }
-
 
 .home-stats__stats {
     padding: 2em;  

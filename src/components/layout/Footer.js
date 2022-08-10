@@ -1,10 +1,10 @@
 import React from 'react'
 import './footer.css'
-import footerDevProfile from './footerDevProfile'
+import developerDetails from './footerDevProfile'
 
 export default function Footer() {
 
-  const devProfile = footerDevProfile.map(devProfile => {
+  const devProfile = developerDetails.map(devProfile => {
     return (
       <ContactInfo contactDetails={devProfile} />
     )

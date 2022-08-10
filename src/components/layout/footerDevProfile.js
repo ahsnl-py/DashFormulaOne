@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as Icons from '@fortawesome/free-solid-svg-icons';
 import * as Brands from '@fortawesome/free-brands-svg-icons';
 
-export default [
+const developerDetails = [
     {
         id: 1,
         devFullName: 'Ahsanulnas',
@@ -47,3 +47,5 @@ export default [
     },
 
 ]
+
+export default developerDetails

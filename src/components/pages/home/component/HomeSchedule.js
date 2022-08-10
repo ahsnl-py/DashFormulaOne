@@ -7,7 +7,7 @@ export default function HomeSchedule() {
     const [currScheduleId, setCurrScheduleId] = React.useState(0)
 
     const raceSchedule = schedules.map(schedule => {
-        if (schedule.id == currScheduleId ) {
+        if (schedule.id === currScheduleId ) {
             return (
                 <>
                     <CardFlag 
@@ -51,6 +51,7 @@ export default function HomeSchedule() {
   return (
     <section className='home-schedule' id="schedule">
         <div className="home-schedule__card">
+
             {raceSchedule}
             <CardAction 
                 handleNext={handleNextSlide} 
@@ -140,26 +141,6 @@ function CardSchedulesList({scheduleList, ...props}) {
         <div className='card__calender'>
             <div className='calender__list'>
                 {scheduleListGroup}
-                {/* <div className='list__item'>
-                    <strong className='item item__type'>FP 2</strong>
-                    <p className='item item__day'>fri</p>
-                    <p className='item item__time'>17:00-18:00</p>
-                </div>
-                <div className='list__item'>
-                    <strong className='item item__type'>FP 3</strong>
-                    <p className='item item__day'>sat</p>
-                    <p className='item item__time'>13:00-14:00</p>
-                </div>
-                <div className='list__item'>
-                    <strong className='item item__type'>QUAL</strong>
-                    <p className='item item__day'>sat</p>
-                    <p className='item item__time'>16:00-17:00</p>
-                </div>
-                <div className='list__item'>
-                    <strong className='item item__type'>RACE</strong>
-                    <p className='item item__day'>sun</p>
-                    <p className='item item__time'>15:00-16:00</p>
-                </div> */}
             </div>
             
         </div>
