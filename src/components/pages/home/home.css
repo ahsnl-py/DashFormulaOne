@@ -117,13 +117,11 @@ button.item__tab {
 .activate,
 button.item__tab:hover {
     background-color: #ddd;
-    font-size: 0.8em;
-    
+    font-size: 0.8em;   
 }
 
 .home-stats__stats {
     padding: 2em;  
-    /* width: 100%; */
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-start;
@@ -131,6 +129,17 @@ button.item__tab:hover {
 
 .stats__charts {
     margin-top: 0;
+}
+
+.stats__charts {
+    border: 2px solid red;
+    width: 100%;
+    margin-top: 1em;
+}
+
+.btn__stats {
+    background-color: var(--clr-dark);
+    color: var(--clr-light);
 }
 
 .stats__table {    
@@ -166,26 +175,16 @@ button.item__tab:hover {
     font-size: var(--fs-small);
 }
 
-.stats__charts {
-    border: 2px solid red;
-    width: 100%;
-    margin-top: 1em;
-}
 
-.btn__stats {
-    background-color: var(--clr-dark);
-    color: var(--clr-light);
-}
 
-@media (max-width:600px) {
+/* @media (max-width:600px) {
     .table tr > th,
     .table tr > td  {
         padding: 0;
     }
-}
+} */
 
 @media (min-width: 1100px) {
-
     .home-stats__stats {
         flex-direction: row;
         max-width: 1320px;

@@ -3,31 +3,68 @@ import driver from './mock_data/driver'
 
 export default function HomeStatsComponents(props) {
     
-    const [statsProps, setStatsProps] = React.useState(driver)
-
-    let currActivateTab
-    switch (props.id) {
-        case "constructor-stats":
-            currActivateTab = <HomeStatsConstructor constructors={statsProps} />
-            break;
-        default:
-            currActivateTab = <HomeStatsDriver drivers={statsProps} />    
-            break;
-        // case "race-res-stats":
-        //     currActivateTab = <HomeStatsRace  />
-        //     break;
-    }
+    const [statsProps, setStatsProps] = React.useState({
+        columns: [],
+        data: []
+    })
 
     React.useEffect(function() {
         fetch(`http://127.0.0.1:5000/api/v1/stats/${props.id}`)
             .then(res => res.json())
-            .then(data => setStatsProps(data["data"]))
+            .then(data => setStatsProps(data))
     }, [props.id])
 
   return (
-    <>{currActivateTab}</>
+        <div className='home-stats__stats'>
+        <div className='stats__charts'>
+            <p>.score-stats-profile</p>
+        </div>
+        <div className='stats__table'>
+            <GenerateTable data={statsProps["data"]} headers={statsProps["columns"]} />
+        </div>
+    </div>
   )
 }
+
+
+function GenerateTable({headers, data}) {
+    const tableHeader = headers.map( (header, idx) => {
+        let headerId = "";
+        if (idx === 0) headerId = "small-table-col"
+        return (
+            <th className={headerId}>{header}</th>
+        )
+    })
+    const tableData = data.map( dict => {
+        const tempArr = [];
+        for (const key of Object.keys(dict)) {
+            tempArr.push(<td>{dict[key]}</td>)
+        }
+        return (
+            <tr>
+                {tempArr}
+            </tr>
+        )
+
+    })
+    return (
+        <table className="table display responsive-table"> 
+            <thead>
+                <tr>
+                    {tableHeader}
+                </tr>
+            </thead>
+            <tbody>
+                {tableData}
+            </tbody>
+        </table>
+    )
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
 
 function HomeStatsDriver({drivers}) {
     const tableData = drivers.map( driver => {
@@ -48,7 +85,7 @@ function HomeStatsDriver({drivers}) {
                 <p>.score-stats-profile</p>
             </div>
             <div className='stats__table'>
-                <table border={1} cellPadding={2} className='table'>
+                <table className='table'>
                     <tr>
                         <th>Position</th>
                         <th>Constructor</th>
@@ -91,11 +128,5 @@ function HomeStatsConstructor({constructors}) {
                 </table>
             </div>
         </div>
-    )
-}
-
-function HomeStatsRace() {
-    return (
-        <div>HomeStatsRace</div>
     )
 }

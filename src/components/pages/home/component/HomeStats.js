@@ -43,10 +43,10 @@ export default function HomeStats() {
 
     const navigateTabs = tabs.map( tab => {
         return (
-            <CustomeNav 
-                tabItems={tab} 
-                handClick={handleTab}
-            />
+          <CustomeNav 
+              tabItems={tab} 
+              handClick={handleTab}
+          />
         )
     })
 

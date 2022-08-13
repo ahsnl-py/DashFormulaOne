@@ -8,10 +8,10 @@ import './home.css'
 export default function Home() {
   return (
     <main className='home-content'>
-        <HomeOverview />
+        {/* <HomeOverview /> */}
         <HomeStats />
-        <HomeSchedule />
-        <HomeNews />
+        {/* <HomeSchedule />
+        <HomeNews /> */}
     </main>
   )
 }
