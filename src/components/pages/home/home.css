@@ -90,11 +90,6 @@ li.list__item {
 }
 
 /* HomeStats */
-
-.home-stats {
-    
-}
-
 .home-stats__nav {
     background-color: #F7F9F9;
     text-align: center;
@@ -105,7 +100,7 @@ li.list__item {
 button {
     border: none;
     cursor: pointer;
-    padding: 0.75em 2.25em;
+    padding: 0.75em 2.1em;
     background-color: inherit;
 }
 
@@ -117,7 +112,7 @@ button.item__tab {
 .activate,
 button.item__tab:hover {
     background-color: #ddd;
-    font-size: 0.8em;   
+    font-size: 0.9em;   
 }
 
 .home-stats__stats {
@@ -143,46 +138,105 @@ button.item__tab:hover {
 }
 
 .stats__table {    
+    /* border: 1px solid red; */
     width: 100%;
 }
 
 .stats__table table {
     width: 100%;
+}
+
+table {
+    border: 1px solid #ccc;
     border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    font-size: var(--fs-small); 
+}
+
+table thead th {
+    padding: 0.5em 0;
+}
+
+table thead th,
+table tbody td {
+    padding: 0.2em;
     text-align: center;
-    margin-bottom: 1em;    
 }
 
-.stats__table td,
-.stats__table th {
-    border: 2px solid #ddd;
-    padding: 0.25em 0.5em;
-}
-
-.stats__table th {
-    background-color: var(--clr-dark);
-    color: var(--clr-light);
-}
-
-.stats__table tr:hover {
-    background-color: #FFE5B4;
-    font-weight: var(--fw-bold);
-    color: var(--clr-dark);
-}
-
-.table tr > th,
-.table tr > td {
-    font-size: var(--fs-small);
+table tr:hover {
+    background-color: #D3D3D3;
+    /* font-size: ; */
 }
 
 
 
-/* @media (max-width:600px) {
-    .table tr > th,
-    .table tr > td  {
-        padding: 0;
+@media (max-width:600px) {
+        
+    table {
+        border: 0;
     }
-} */
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        background-color: #f8f8f8;
+        border-bottom: 3px solid #ddd;
+        display: block;
+        padding: 0.35em;
+        margin-bottom: .625em;
+    }
+
+    table tbody td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: 1.1em;
+        text-align: right;
+    }
+
+    table tbody td::before {
+        /*
+        * aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(title);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table tbody tr {
+        border-radius: 5px;
+    }
+
+    table tbody td:last-child {
+        border-bottom: 0;
+    }
+}
+
+@media (min-width: 900px) {
+    .activate,
+    button.item__tab:hover {
+        background-color: #ddd;
+        font-size: 0.8em;   
+    }
+}
 
 @media (min-width: 1100px) {
     .home-stats__stats {
@@ -204,6 +258,10 @@ button.item__tab:hover {
         /* margin-top: 0; */
     }
 }
+
+/* HomeStatsRefNote 
+    Ref(1): For table responsive creation, please visit more: https://codepen.io/AllThingsSmitty/pen/MyqmdM 
+*/
 
 /* HomeSchedule */
 .home-schedule {

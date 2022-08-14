@@ -28,27 +28,20 @@ export default function HomeStatsComponents(props) {
 
 
 function GenerateTable({headers, data}) {
-    const tableHeader = headers.map( (header, idx) => {
-        let headerId = "";
-        if (idx === 0) headerId = "small-table-col"
-        return (
-            <th className={headerId}>{header}</th>
-        )
-    })
+    const tableHeader = headers.map( header => <th scope='col'>{header}</th>)
     const tableData = data.map( dict => {
         const tempArr = [];
         for (const key of Object.keys(dict)) {
-            tempArr.push(<td>{dict[key]}</td>)
+            tempArr.push(<td title={headers[parseInt(key)]}>{dict[key]}</td>)
         }
         return (
             <tr>
                 {tempArr}
             </tr>
         )
-
     })
     return (
-        <table className="table display responsive-table"> 
+        <table> 
             <thead>
                 <tr>
                     {tableHeader}
