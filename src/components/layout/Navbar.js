@@ -2,8 +2,7 @@ import React from 'react'
 import logo from './images/dash-f1-logo-3.png'
 import './navbar.css'
 
-export default function () {
-  const [isOpen, setIsOpen] = React.useState(false)
+export default function Navbar() {
 
   function handleNav() {
     document.body.classList.toggle("nav-open")

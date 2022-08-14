@@ -1,32 +1,52 @@
 import React from 'react'
-import HomeStatsNav from './HomeStatsNav'
+import HomeStatsComponents from "./HomeStatsComponents.js"
+// import navbarStatsList from './HomeStatsNav'
 
 export default function HomeStats() {
+    
+    const navStatsTabs = [
+      {
+          id: "driver-stats",
+          tabName: "Driver",
+          isOnTab: true
+      },
+      {
+          id: "constructor-stats",
+          tabName: "Constructor",
+          isOnTab: false
+      }
+      // , TBD
+      // {
+      //     id: "race-res-stats",
+      //     tabName: "Race Results",
+      //     isOnTab: false
+      // }
+    ]
 
-    const [tabs, setTabs] = React.useState(HomeStatsNav)
-    const [currTab, setCurrTab] = React.useState(tabs[0].customeComp)
+    const [tabs, setTabs] = React.useState(navStatsTabs)
+    const [currTabId, setcurrTabId] = React.useState(tabs[0].id)
 
     function handleTab(id) {
-        for (let i=0; i<tabs.length; i++) {
-          if (tabs[i].id === id) {
-            setCurrTab(tabs[i].customeComp)
-          }
+      for (let i=0; i<tabs.length; i++) {
+        if (tabs[i].id === id) {
+          setcurrTabId(tabs[i].id)
         }
-    
-        setTabs((prevTabs) => {
-          prevTabs.map(tab => tab.isOnTab = false)
-          return prevTabs.map((tab) => {
-            return tab.id === id ? {...tab, isOnTab: true} : tab
-          })
-        })
       }
+  
+      setTabs((prevTabs) => {
+        prevTabs.map(tab => tab.isOnTab = false)
+        return prevTabs.map((tab) => {
+          return tab.id === id ? {...tab, isOnTab: true} : tab
+        })
+      })
+    }
 
     const navigateTabs = tabs.map( tab => {
         return (
-            <CustomeNav 
-                tabItems={tab} 
-                handClick={handleTab}
-            />
+          <CustomeNav 
+              tabItems={tab} 
+              handClick={handleTab}
+          />
         )
     })
 
@@ -36,7 +56,7 @@ export default function HomeStats() {
             {navigateTabs}
         </div>
         <div className='nav__items'>
-            {currTab}
+            <HomeStatsComponents id={currTabId} />
         </div>
     </section>
   )

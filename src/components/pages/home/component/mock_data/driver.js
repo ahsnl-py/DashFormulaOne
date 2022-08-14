@@ -1,62 +1,62 @@
 export default [
     {
-        position: 1,
-        driverName: "Max Verstapan",
-        driverTeam: "Red Bull",
-        driverPoints: 258
+        "row_number": 1,
+        "constructors_name": "Mercedes",
+        "driver_fullname": "Lewis Hamilton",
+        "points": 407
     },
     {
-        position: 2,
-        driverName: "Charles Lec",
-        driverTeam: "Ferrari",
-        driverPoints: 178
+        "row_number": 2,
+        "constructors_name": "Mercedes",
+        "driver_fullname": "Valtteri Bottas",
+        "points": 324
     },
     {
-        position: 3,
-        driverName: "Sergio Perez",
-        driverTeam: "Red Bull",
-        driverPoints: 173
+        "row_number": 3,
+        "constructors_name": "Red Bull",
+        "driver_fullname": "Max Verstappen",
+        "points": 275
     },
     {
-        position: 4,
-        driverName: "George Russell",
-        driverTeam: "Mercedes",
-        driverPoints: 158
+        "row_number": 4,
+        "constructors_name": "Ferrari",
+        "driver_fullname": "Charles Leclerc",
+        "points": 260
     },
     {
-        position: 5,
-        driverName: "Carlos Sainz",
-        driverTeam: "Ferrari",
-        driverPoints: 156
+        "row_number": 5,
+        "constructors_name": "Ferrari",
+        "driver_fullname": "Sebastian Vettel",
+        "points": 238
     },
     {
-        position: 6,
-        driverName: "Lewis Hamilton",
-        driverTeam: "Mercedes",
-        driverPoints: 146
+        "row_number": 6,
+        "constructors_name": "McLaren",
+        "driver_fullname": "Carlos Sainz",
+        "points": 96
     },
     {
-        position: 7,
-        driverName: "Lando Norris",
-        driverTeam: "McLeran",
-        driverPoints: 76
+        "row_number": 7,
+        "constructors_name": "Red Bull",
+        "driver_fullname": "Alexander Albon",
+        "points": 76
     },
     {
-        position: 8,
-        driverName: "Esteban Ocon",
-        driverTeam: "Alphine",
-        driverPoints: 58
+        "row_number": 8,
+        "constructors_name": "Red Bull",
+        "driver_fullname": "Pierre Gasly",
+        "points": 61
     },
     {
-        position: 9,
-        driverName: "Valtterri Bottas",
-        driverTeam: "Alfa Romeo",
-        driverPoints: 46
+        "row_number": 9,
+        "constructors_name": "Renault",
+        "driver_fullname": "Daniel Ricciardo",
+        "points": 54
     },
     {
-        position: 10,
-        driverName: "Fernando Alonso",
-        driverTeam: "Alphine",
-        driverPoints: 41
+        "row_number": 10,
+        "constructors_name": "Racing Point",
+        "driver_fullname": "Sergio Pérez",
+        "points": 52
     }
 ]
