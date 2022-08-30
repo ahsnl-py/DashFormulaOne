@@ -4,9 +4,26 @@ import Clock from 'react-live-clock';
 import schedules from './mock_data/schedules';
 
 export default function HomeSchedule() {
-    const [currScheduleId, setCurrScheduleId] = React.useState(0)
+    const [currScheduleId, setCurrScheduleId] = React.useState(
+        JSON.parse(window.localStorage.getItem("Id")) || 0
+    )
+    const [eventSchedule, setEventSchedule] = React.useState(
+        JSON.parse(window.localStorage.getItem("scheduleArr")) || 
+        []
+    )
 
-    const raceSchedule = schedules.map(schedule => {
+    React.useEffect(()=> {
+        window.localStorage.setItem("Id", JSON.stringify(currScheduleId))
+        const item = window.localStorage.setItem("scheduleArr", JSON.stringify(eventSchedule))
+        if (!item) {
+            fetch("http://127.0.0.1:5000/api/v1/stats/race-schedule/2022")
+                .then(res => res.json())
+                .then(data => setEventSchedule(data))
+        }        
+
+    }, [currScheduleId])
+
+    const raceSchedule = eventSchedule.map(schedule => {
         if (schedule.id === currScheduleId ) {
             return (
                 <>
@@ -17,6 +34,7 @@ export default function HomeSchedule() {
                     <CardTitle 
                         cardDate={schedule.gpDates}
                         cardCountry={schedule.gpCountry} 
+                        cardOfficalName={schedule.gpRaceEventOffical}
                     />
                     <CardClock />
                     <button className='section__btn card__btn'>Change to your time</button> 
@@ -30,7 +48,7 @@ export default function HomeSchedule() {
 
     function handleNextSlide() {
         setCurrScheduleId(prevId => {
-            if (prevId === schedules.length - 1){
+            if (prevId === eventSchedule.length - 1){
                 return 0
             } else {
                 return prevId + 1;
@@ -41,7 +59,7 @@ export default function HomeSchedule() {
     function handlePrevSlide() {
         setCurrScheduleId(prevId => {
             if (prevId === 0) {
-                return prevId = schedules.length - 1;
+                return prevId = eventSchedule.length - 1;
             } else {
                 return prevId - 1;
             }
@@ -101,10 +119,10 @@ function CardFlag({cardCountry, cardCountryCode, ...props}) {
     )
 }
 
-function CardTitle({cardCountry, cardDate, ...props}) {
+function CardTitle({cardCountry, cardDate, cardOfficalName, ...props}) {
     return (
         <div className='card__gp-title'>
-            <h3 className='gp-title__main'>{`Formula 1 ${cardCountry} Grand Prix 2022`}</h3>
+            <h3 className='gp-title__main'>{cardOfficalName}</h3>
             <p className='gp-title__date'>{cardDate}</p>
         </div>
     )

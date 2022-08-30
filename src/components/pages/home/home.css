@@ -23,6 +23,8 @@ ul.res-list {
     justify-content: space-between;
     align-items: center;
     border-radius: 3px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .list__item > .item {
@@ -55,13 +57,15 @@ ul.res-list {
     color: var(--clr-yellow)
 }
 
-
 .list__item {
     margin: 0.25em 0;
     /* border: 1px solid blue; */
 }
 
-
+.list__item:hover {
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+}
 
 .item__title {
     display: none;
@@ -78,8 +82,6 @@ ul.res-list {
         max-width: 1320px;
         margin: 0 auto;
     }
-
-   
 
     .home-overview__container {
         display: flex;
@@ -349,6 +351,7 @@ table tr:hover {
 
 .card__gp-title {
     font-family: var(--ff-secondary);
+    padding: 0.7em;
 }
 
 
@@ -362,10 +365,10 @@ table tr:hover {
 .card__time {
     font-size: var(--fs-h3);
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    padding-top: 0;
-    padding-bottom: 1em;
+    padding-bottom: 0.7em;
+    /* padding-top: 0; */
 }
 
 .card__btn {
@@ -412,9 +415,11 @@ button#action-btn__prev:hover {
     display: none;
 }
 
-.calender__list {
-    padding-left: 0;
-    margin-bottom: 0;
+.calender__list  {
+    margin: 0 auto;
+    padding: 0.7em;
+    /* padding-left: 0; */
+    /* margin-bottom: 0; */
     /* display: block; */
 }
 
@@ -424,12 +429,32 @@ button#action-btn__prev:hover {
 }
 
 .card__calender {
-    margin-top: 1em;
+    /* margin-top: 1em; */  
+}
+
+.schedule__item {
+    display: flex;
+    justify-content: space-around;
+    margin: 0.5em 0;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+}
+
+.schedule__item p {
+    /* font-size: var(--fs-small); */
+    font-size: 0.7em;
+    margin: 0.2em;
+}
+
+p.time {
+    font-size: 0.6em;
+    
 }
 
 @media only screen and (min-width: 600px) {
     .home-schedule__card {   
         width: max-content;
+        padding: 1em;
     }
 
     p.gp-title__date {
@@ -442,8 +467,9 @@ button#action-btn__prev:hover {
     .calender__list {
         display: grid;
         grid-template-rows: repeat(3, 2em);
-        gap: 10px;
+        gap: 5px;
         grid-auto-flow: column;
+        /* justify-items: start; */
     }
 
     .time__local-time {
@@ -456,6 +482,16 @@ button#action-btn__prev:hover {
         font-size: var(--fs-small);
         font-weight: var(--fw-bold);
     }
+
+    .card__time {
+        justify-content: space-around;
+    }
+
+    .schedule__item {
+        /* height: max-content; */
+        align-items: center;
+    }
+
 }
 
 /* HomeNews */
