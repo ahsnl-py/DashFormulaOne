@@ -2,7 +2,7 @@ import React from 'react'
 import HomeStatsComponents from "./HomeStatsComponents.js"
 // import navbarStatsList from './HomeStatsNav'
 
-export default function HomeStats() {
+export default function HomeStats({raceYear}) {
     
     const navStatsTabs = [
       {
@@ -22,7 +22,6 @@ export default function HomeStats() {
       //     isOnTab: false
       // }
     ]
-
     const [tabs, setTabs] = React.useState(navStatsTabs)
     const [currTabId, setcurrTabId] = React.useState(tabs[0].id)
 
@@ -56,7 +55,7 @@ export default function HomeStats() {
             {navigateTabs}
         </div>
         <div className='nav__items'>
-            <HomeStatsComponents id={currTabId} />
+            <HomeStatsComponents id={currTabId} session={raceYear} />
         </div>
     </section>
   )

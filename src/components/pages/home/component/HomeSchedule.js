@@ -3,7 +3,7 @@ import ReactCountryFlag from "react-country-flag"
 import Clock from 'react-live-clock';
 import schedules from './mock_data/schedules';
 
-export default function HomeSchedule() {
+export default function HomeSchedule({year}) {
     const [currScheduleId, setCurrScheduleId] = React.useState(
         JSON.parse(window.localStorage.getItem("Id")) || 0
     )
@@ -16,7 +16,7 @@ export default function HomeSchedule() {
         window.localStorage.setItem("Id", JSON.stringify(currScheduleId))
         const item = window.localStorage.setItem("scheduleArr", JSON.stringify(eventSchedule))
         if (!item) {
-            fetch("http://127.0.0.1:5000/api/v1/stats/race-schedule/2022")
+            fetch(`http://dash-formula-one-api.herokuapp.com/api/v1/stats/race-schedule/${year}`)
                 .then(res => res.json())
                 .then(data => setEventSchedule(data))
         }        

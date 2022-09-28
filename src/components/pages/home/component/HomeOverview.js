@@ -9,12 +9,12 @@ export default function HomeOverview({race_date}) {
     const [overviewTitle, setOverviewTitle] = React.useState({})
 
     React.useEffect(function() {
-        fetch(`http://127.0.0.1:5000/api/v1/utils/validate/${race_date}/gp-race-results`)
+        fetch(`http://dash-formula-one-api.herokuapp.com/api/v1/utils/validate/${race_date}/gp-race-results-yearly`)
             .then(res => res.json())
             .then(data => setValidateRaceDate(data[0]['_isexists']))
 
         if (validateRaceDate === true) {
-            fetch(`http://127.0.0.1:5000/api/v1/stats/gp-race-results/${race_date}`)
+            fetch(`http://dash-formula-one-api.herokuapp.com/api/v1/stats/gp-race-results-yearly/${race_date}`)
             .then(res => res.json())
             .then(data => {
                 setDriverWinningStats(data['front_runner_data']);

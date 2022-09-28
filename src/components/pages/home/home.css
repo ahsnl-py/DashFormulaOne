@@ -204,7 +204,6 @@ button.item__tab:hover {
 }
 
 table {
-    border: 1px solid #ccc;
     border-collapse: collapse;
     margin: 0;
     padding: 0;
@@ -213,9 +212,10 @@ table {
 }
 
 table tr {
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
+    background-color: var(--clr-dark);
+    /* border: 0.5px solid yellow; */
     font-size: var(--fs-small); 
+    color: #ddd;
 }
 
 table thead th {
@@ -229,7 +229,8 @@ table tbody td {
 }
 
 table tr:hover {
-    background-color: #D3D3D3;
+    background-color: var(--clr-dark);
+    color: yellow;
     /* font-size: ; */
 }
 
@@ -253,8 +254,6 @@ table tr:hover {
     }
 
     table tr {
-        background-color: #f8f8f8;
-        border-bottom: 3px solid #ddd;
         display: block;
         padding: 0.35em;
         margin-bottom: .625em;
@@ -516,7 +515,6 @@ p.time {
 .list__item-news {
     display: flex;
     flex-direction: column;
-
 }
 
 .item__link {

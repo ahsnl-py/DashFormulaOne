@@ -6,13 +6,14 @@ import HomeNews from './component/HomeNews'
 import './home.css'
 
 export default function Home() {
-  let getDate = '2022-03-27'
+  let getDate = '2021-12-12'
+  let ryear = getDate.slice(0,4)
   return (
     <main className='home-content'>
-        <HomeOverview  race_date={getDate} />
-        <HomeStats />
-        <HomeSchedule />
-        <HomeNews />
+        {/* <HomeOverview  race_date={getDate} /> */}
+        <HomeStats raceYear={2021}/>
+        {/* <HomeSchedule year={ryear}/> */}
+        {/* <HomeNews /> */}
     </main>
   )
 }
