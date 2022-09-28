@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactCountryFlag from "react-country-flag"
 import Clock from 'react-live-clock';
-import schedules from './mock_data/schedules';
 
 export default function HomeSchedule({year}) {
     const [currScheduleId, setCurrScheduleId] = React.useState(

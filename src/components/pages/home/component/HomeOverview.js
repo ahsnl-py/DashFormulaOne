@@ -1,5 +1,4 @@
 import React from 'react'
-import driverRunner from './mock_data/overview'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as Icons from '@fortawesome/free-solid-svg-icons';
 
