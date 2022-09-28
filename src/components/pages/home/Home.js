@@ -10,10 +10,10 @@ export default function Home() {
   let ryear = getDate.slice(0,4)
   return (
     <main className='home-content'>
-        {/* <HomeOverview  race_date={getDate} /> */}
+        <HomeOverview  race_date={getDate} />
         <HomeStats raceYear={2021}/>
-        {/* <HomeSchedule year={ryear}/> */}
-        {/* <HomeNews /> */}
+        <HomeSchedule year={ryear}/>
+        <HomeNews />
     </main>
   )
 }

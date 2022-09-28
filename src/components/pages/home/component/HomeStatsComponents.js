@@ -20,7 +20,6 @@ export default function HomeStatsComponents(props) {
         </div>
         <div className='stats__table'>
             <GenerateTable data={statsProps["data"]} headers={statsProps["columns"]} />
-            <MyResponsiveLine />
         </div>
     </div>
   )
