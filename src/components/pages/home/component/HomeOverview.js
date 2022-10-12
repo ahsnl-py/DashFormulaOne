@@ -4,21 +4,28 @@ import * as Icons from '@fortawesome/free-solid-svg-icons';
 
 export default function HomeOverview({race_date}) {
     const [validateRaceDate, setValidateRaceDate] = React.useState(false)
-    const [driverWinningStat, setDriverWinningStats] = React.useState([])
-    const [overviewTitle, setOverviewTitle] = React.useState({})
+    const [driverWinningStat, setDriverWinningStats] = React.useState(
+        JSON.parse(window.localStorage.getItem("driverWinStats")) || [])
+    const [overviewTitle, setOverviewTitle] = React.useState(
+        JSON.parse(window.localStorage.getItem("title")) || {})
 
     React.useEffect(function() {
+        // dash-formula-one-api.herokuapp.com
         fetch(`http://dash-formula-one-api.herokuapp.com/api/v1/utils/validate/${race_date}/gp-race-results-yearly`)
-            .then(res => res.json())
-            .then(data => setValidateRaceDate(data[0]['_isexists']))
-
+        .then(res => res.json())
+        .then(data => setValidateRaceDate(data[0]['_isexists']))
+        
         if (validateRaceDate === true) {
-            fetch(`http://dash-formula-one-api.herokuapp.com/api/v1/stats/gp-race-results-yearly/${race_date}`)
-            .then(res => res.json())
-            .then(data => {
-                setDriverWinningStats(data['front_runner_data']);
-                setOverviewTitle(data['race_event_info'][0])
-            })
+            const frontRunnerDataOne = window.localStorage.setItem("driverWinStats", JSON.stringify(driverWinningStat))
+            const frontRunnerDataTwo = window.localStorage.setItem("title", JSON.stringify(overviewTitle))
+            if (!(frontRunnerDataOne && frontRunnerDataTwo)) {
+                fetch(`http://dash-formula-one-api.herokuapp.com/api/v1/stats/gp-race-results-yearly/${race_date}`)
+                .then(res => res.json())
+                .then(data => {
+                    setDriverWinningStats(data['front_runner_data']);
+                    setOverviewTitle(data['race_event_info'][0])
+                })
+            }
         }
     }, [validateRaceDate])
 

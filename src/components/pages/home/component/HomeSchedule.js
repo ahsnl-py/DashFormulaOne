@@ -15,7 +15,7 @@ export default function HomeSchedule({year}) {
         window.localStorage.setItem("Id", JSON.stringify(currScheduleId))
         const item = window.localStorage.setItem("scheduleArr", JSON.stringify(eventSchedule))
         if (!item) {
-            fetch(`http://dash-formula-one-api.herokuapp.com/api/v1/stats/race-schedule/${year}`)
+            fetch(`http://dash-formula-one-api.herokuapp.com/api/v1/stats/event/race-schedule/2021`)
                 .then(res => res.json())
                 .then(data => setEventSchedule(data))
         }        
