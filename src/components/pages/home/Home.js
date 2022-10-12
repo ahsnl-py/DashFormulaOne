@@ -13,7 +13,7 @@ export default function Home() {
         <HomeOverview  race_date={getDate} />
         <HomeStats raceYear={parseInt(ryear)}/>
         <HomeSchedule year={ryear}/>
-        {/* <HomeNews /> */}
+        <HomeNews /> 
     </main>
   )
 }
