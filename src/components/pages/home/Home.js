@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main className='home-content'>
         <HomeOverview  race_date={getDate} />
-        <HomeStats raceYear={2021}/>
+        <HomeStats raceYear={parseInt(ryear)}/>
         <HomeSchedule year={ryear}/>
         {/* <HomeNews /> */}
     </main>
