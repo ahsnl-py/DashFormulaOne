@@ -20,6 +20,7 @@
   --clr-dark: #17202A;
   --clr-light: #fff;
   --clr-yellow: #FFAA33;
+  --clr-charcoal: #36454F;
 
   --fs-h1: 3rem;
   --fs-h2: 2.25rem;
@@ -73,8 +74,6 @@ h2 { font-size: var(--fs-h2);}
 h3 { font-size: var(--fs-h3);}
 
 /* section custome style */
-
-
 .section__title {
   font-size: var(--fs-h2);
   margin-bottom: 0.5em;
@@ -83,7 +82,6 @@ h3 { font-size: var(--fs-h3);}
 .section-subtitle {
   margin: 0;
   font-size: var(--fs-h3);
-  /* font-family: var(--ff-secondary); */
 }
 
 /* section custome button */

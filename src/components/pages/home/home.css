@@ -10,7 +10,6 @@
 
 .container__res-list {
     max-width: 100%;
-    /* border: 1px solid red; */
     margin-bottom: 1em;
 }
 
@@ -24,6 +23,8 @@ ul.res-list {
     justify-content: space-between;
     align-items: center;
     border-radius: 3px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .list__item > .item {
@@ -31,14 +32,43 @@ ul.res-list {
     margin: 0.5em 1em;
 }
 
+.list__item > .item-container {
+    /* display: flex;
+    flex-direction: row; */
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+}
+
+.item-part {
+    margin: auto 0;
+}
+
+.highlight-green {
+    color: green;
+}
+
+.highlight-red {
+    color: red;
+}
+
+.highlight-neutral {
+    color: var(--clr-yellow)
+}
+
+.list__item {
+    margin: 0.25em 0;
+    /* border: 1px solid blue; */
+}
+
 .list__item:hover {
     background-color: var(--clr-light);
     color: var(--clr-dark);
 }
 
-li.list__item {
-    margin: 0.25em 0;
-    border: 1px solid blue;
+.item__title {
+    display: none;
 }
 
 .container__res-stats {
@@ -60,6 +90,18 @@ li.list__item {
     .container__res-list {
         width: 50%
     }
+
+    .item.item-container {
+        display: none;
+    }
+
+    .item.item__title {
+        display: block;
+    }
+
+    /* .list__item > .item {
+        
+    } */
 }
 
 .container__res-stats {
@@ -72,7 +114,7 @@ li.list__item {
     border: 2px solid yellow;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
     .container--home-overview {
         padding: 1em;
@@ -88,93 +130,68 @@ li.list__item {
     }
 
     .stats__two { margin-bottom: 0;}
+
+    .list__item > .item-container {
+        width: 40%;
+    }
+}
+
+@media (max-width: 450px) {
+    .list__item > .item-container {
+        display: none;
+    }
+
+    .item__title {
+        display: inline;
+    }
 }
 
 /* HomeStats */
-
-.home-stats {
-    
-}
-
 .home-stats__nav {
     background-color: #F7F9F9;
-    padding: 0.35em 0;
+    text-align: center;
     margin-top: 0;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
 }
 
-.nav__lists {
-    display: flex;
-    justify-content: center;
-}
-
-ul.nav__lists {
-    list-style: none;
-    padding-left: 0;
-}
-
-li.list__item.nav--item {
-    margin-right: 1em;
-    font-weight: var(--fw-bold);
+button {
     border: none;
+    cursor: pointer;
+    padding: 0.75em 2.1em;
+    background-color: inherit;
 }
 
-a.item__tab {
-    text-decoration: none;
-    color: var(--clr-dark);
+button.item__tab {
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-bold);
 }
 
-a.item__tab:hover {
-    color: var(--clr-red);
-}
-
-.container--home-stats {
+.activate,
+button.item__tab:hover {
+    background-color: #ddd;
+    font-size: 0.9em;   
 }
 
 .home-stats__stats {
     padding: 2em;  
-    /* width: 100%; */
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-start;
 }
 
-.stats__charts {
-    margin-top: 0;
-}
-
-.stats__table {    
-    width: 100%;
-}
-
-.stats__table table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-    margin-bottom: 1em;    
-}
-
-.stats__table td,
-.stats__table th {
-    border: 2px solid #ddd;
-    padding: 0.25em 0.5em;
-}
-
-.stats__table th {
-    background-color: var(--clr-dark);
-    color: var(--clr-light);
-}
-
-.stats__table tr:hover {
-    background-color: #FFE5B4;
+/* .stats__title {
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 20px;
+    font-family: var(--ff-secondary);
     font-weight: var(--fw-bold);
-    color: var(--clr-dark);
-}
+} */
 
 .stats__charts {
-    border: 2px solid red;
-    width: 100%;
-    margin-top: 1em;
+    /* border: 2px solid var(--clr-dark); */
+    margin-top: 0;
+    width: 100%;    
+    margin-top: 1em;   
 }
 
 .btn__stats {
@@ -182,42 +199,171 @@ a.item__tab:hover {
     color: var(--clr-light);
 }
 
-@media (min-width: 1100px) {
+.stats__table {        
+    width: 100%;
+}
+
+.stats__table table {
+    width: 100%;
+}
+
+.chart__pie,
+.chart__line {
+    text-align: center;
+    padding: 1em;       
+    color:var(--clr-dark);  
+    /* background-color: #FFFFF0; */
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table tr {
+    background-color: var(--clr-dark);
+    /* border: 0.5px solid yellow; */
+    font-size: var(--fs-small); 
+    color: #ddd;
+}
+
+table thead th {
+    padding: 0.5em 0;
+}
+
+table thead th,
+table tbody td {
+    padding: 0.2em;
+    text-align: center;
+}
+
+table tr:hover {
+    background-color: var(--clr-dark);
+    color: yellow;
+    /* font-size: ; */
+}
+
+@media (max-width:500px) {
+
+}
+
+@media (max-width:650px) {
+        
+    table {
+        border: 0;
+    }
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        display: block;
+        padding: 0.35em;
+        margin-bottom: .625em;
+    }
+
+    table tbody td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: 1.1em;
+        text-align: right;
+    }
+
+    table tbody td::before {
+        /*
+        * aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(title);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table tbody tr {
+        border-radius: 5px;
+    }
+
+    table tbody td:last-child {
+        border-bottom: 0;
+    }
+
+    .chart__line,
+    .chart__pie {
+        display: none;
+    }
+ 
+}
+
+@media (min-width: 900px) {
+    .activate,
+    button.item__tab:hover {
+        background-color: #ddd;
+        font-size: 0.8em;   
+    }
 
     .home-stats__stats {
-        flex-direction: row;
-        max-width: 1320px;
+        max-width: 1200px;
         width: 100%;
         margin: 0 auto; 
-        justify-content: space-between;
-        align-items: flex-start;
     }
 
     .stats__charts {
-        width: 39.5%;
-        margin-top: 0;
+        display: flex;
     }
 
-    .stats__table {
-        width: 59.5%;
-        /* margin-top: 0; */
+    .chart__pie {
+        /* border: 1px solid red;  */
+        width:50%;
     }
+
+    .chart__line {
+        /* border: 1px solid red; */
+        width:50%;
+    } 
+   
+
+
+    /* .stats__charts {
+        width: 29.5%;
+        margin-top: 0;
+       
+    } */
+
+    /* .stats__table {
+        width: 69.5%;
+    } */
 }
+
+/* HomeStatsRefNote 
+    Ref(1): For table responsive creation, please visit more: https://codepen.io/AllThingsSmitty/pen/MyqmdM 
+*/
 
 /* HomeSchedule */
 .home-schedule {
     display: flex;
     justify-content: center;
-    background-color: var(--clr-dark);
+    background-color: var(--clr-charcoal);
     color: var(--clr-light);
     padding: 2em 0;
 }
 
 .home-schedule__card {
-    max-width: 350px;
+    width: 350px;
     padding: 0.75em;
     text-align: center;
-    border: 2px solid rgb(255, 217, 12);
+    border: 2px solid var(--clr-light);
     border-radius: 5px;
 }
 
@@ -235,10 +381,12 @@ a.item__tab:hover {
 
 .card__gp-title {
     font-family: var(--ff-secondary);
+    padding: 0.7em;
 }
 
+
 .gp-title__date {
-    font-size: var(--fs-small);
+    font-size: 0.75em;
     font-weight: var(--fw-bold);
     margin-top: 0;
     margin-bottom: 0;
@@ -247,10 +395,10 @@ a.item__tab:hover {
 .card__time {
     font-size: var(--fs-h3);
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    padding-top: 0;
-    padding-bottom: 1em;
+    padding-bottom: 0.7em;
+    /* padding-top: 0; */
 }
 
 .card__btn {
@@ -261,6 +409,34 @@ a.item__tab:hover {
     margin-right: 0;
 }
 
+.home-schedule__card .card__action-btn {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1em;
+    /* flex-direction: column; */
+}
+
+.home-schedule__card .card__action-btn button {
+    font-family: var(--ff-primary);
+    color: var(--clr-light);
+    border: 1px solid var(--clr-light);
+    border-radius: .25em;
+
+}   
+
+button#action-btn__next,
+button#action-btn__prev {
+    padding: 0.5em 1.5em;
+    /* font-size: var(--fs-small); */
+    font-weight: bold;
+}
+
+button#action-btn__next:hover,
+button#action-btn__prev:hover {
+    background-color: var(--clr-yellow);
+    border: none;
+}
+
 .time__local-time {
     display: none;
 }
@@ -269,9 +445,11 @@ a.item__tab:hover {
     display: none;
 }
 
-.calender__list {
-    padding-left: 0;
-    margin-bottom: 0;
+.calender__list  {
+    margin: 0 auto;
+    padding: 0.7em;
+    /* padding-left: 0; */
+    /* margin-bottom: 0; */
     /* display: block; */
 }
 
@@ -281,14 +459,36 @@ a.item__tab:hover {
 }
 
 .card__calender {
-    /* max-height: 90px; */
-    /* align-items: stretch; */
-    margin-top: 1em;
+    /* margin-top: 1em; */  
 }
 
-@media (min-width: 300px) {
-    .home-schedule__card {
-        max-width: max-content;
+.schedule__item {
+    display: flex;
+    justify-content: space-around;
+    margin: 0.5em 0;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+}
+
+.schedule__item p {
+    /* font-size: var(--fs-small); */
+    font-size: 0.7em;
+    margin: 0.2em;
+}
+
+p.time {
+    font-size: 0.6em;
+    
+}
+
+@media only screen and (min-width: 600px) {
+    .home-schedule__card {   
+        width: max-content;
+        padding: 1em;
+    }
+
+    p.gp-title__date {
+        font-size: var(--fs-small);
     }
 }
 
@@ -297,8 +497,9 @@ a.item__tab:hover {
     .calender__list {
         display: grid;
         grid-template-rows: repeat(3, 2em);
-        gap: 10px;
+        gap: 5px;
         grid-auto-flow: column;
+        /* justify-items: start; */
     }
 
     .time__local-time {
@@ -311,6 +512,16 @@ a.item__tab:hover {
         font-size: var(--fs-small);
         font-weight: var(--fw-bold);
     }
+
+    .card__time {
+        justify-content: space-around;
+    }
+
+    .schedule__item {
+        /* height: max-content; */
+        align-items: center;
+    }
+
 }
 
 /* HomeNews */
@@ -335,7 +546,6 @@ a.item__tab:hover {
 .list__item-news {
     display: flex;
     flex-direction: column;
-
 }
 
 .item__link {
