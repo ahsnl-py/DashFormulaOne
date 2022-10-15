@@ -17,11 +17,11 @@ export default function HomeStatsComponents(props) {
     );
 
     const fetchStatsData = () => {
-        fetch(`http://dash-formula-one-api.herokuapp.com/api/v1/stats/${props.id}/${props.session}`)
+        fetch(`https://dash-formula-one-api.herokuapp.com/api/v1/stats/${props.id}/${props.session}`)
             .then(res => res.json())
             .then(data => setStatsProps(data))
 
-        fetch(`http://dash-formula-one-api.herokuapp.com/api/v1/stats/${props.id}-charts/${props.session}`)
+        fetch(`https://dash-formula-one-api.herokuapp.com/api/v1/stats/${props.id}-charts/${props.session}`)
             .then(res => res.json())
             .then(data => setChartData(data))
     }

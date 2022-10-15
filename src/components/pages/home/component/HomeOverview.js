@@ -11,7 +11,7 @@ export default function HomeOverview({race_date}) {
 
     React.useEffect(function() {
         // dash-formula-one-api.herokuapp.com
-        fetch(`http://dash-formula-one-api.herokuapp.com/api/v1/utils/validate/${race_date}/gp-race-results-yearly`)
+        fetch(`https://dash-formula-one-api.herokuapp.com/api/v1/utils/validate/${race_date}/gp-race-results-yearly`)
         .then(res => res.json())
         .then(data => setValidateRaceDate(data[0]['_isexists']))
         
@@ -19,7 +19,7 @@ export default function HomeOverview({race_date}) {
             const frontRunnerDataOne = window.localStorage.setItem("driverWinStats", JSON.stringify(driverWinningStat))
             const frontRunnerDataTwo = window.localStorage.setItem("title", JSON.stringify(overviewTitle))
             if (!(frontRunnerDataOne && frontRunnerDataTwo)) {
-                fetch(`http://dash-formula-one-api.herokuapp.com/api/v1/stats/gp-race-results-yearly/${race_date}`)
+                fetch(`https://dash-formula-one-api.herokuapp.com/api/v1/stats/gp-race-results-yearly/${race_date}`)
                 .then(res => res.json())
                 .then(data => {
                     setDriverWinningStats(data['front_runner_data']);
