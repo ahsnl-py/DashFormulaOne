@@ -1,8 +1,15 @@
 import React from 'react'
 import ReactCountryFlag from "react-country-flag"
 import Clock from 'react-live-clock';
+import { DashAPICore } from '../../../../service/api/utils/core';
 
 export default function HomeSchedule({year}) {
+
+    const raceScheduleAPI = new DashAPICore({
+        request: 'GET',
+        url: `api/v1/stats/event/race-schedule/${year}`
+    })
+
     const [currScheduleId, setCurrScheduleId] = React.useState(
         JSON.parse(window.localStorage.getItem("Id")) || 0
     )
@@ -15,7 +22,7 @@ export default function HomeSchedule({year}) {
         window.localStorage.setItem("Id", JSON.stringify(currScheduleId))
         const item = window.localStorage.setItem("scheduleArr", JSON.stringify(eventSchedule))
         if (!item) {
-            fetch(`https://dash-formula-one-api.herokuapp.com/api/v1/stats/event/race-schedule/2021`)
+            raceScheduleAPI.getData()
                 .then(res => res.json())
                 .then(data => setEventSchedule(data))
         }        

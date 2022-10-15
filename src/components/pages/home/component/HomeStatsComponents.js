@@ -1,7 +1,16 @@
 import React, { PureComponent } from 'react'
 import DashChartPie from '../charts/DashChartPie.tsx';
 import DashChartLine from '../charts/DashChartLine.js'
+import { DashAPICore } from '../../../../service/api/utils/core';
+
 export default function HomeStatsComponents(props) {
+
+    const url_tables = `api/v1/stats/${props.id}/${props.session}`
+    const url_charts = `api/v1/stats/${props.id}-charts/${props.session}`
+    const raceStatsAPI = new DashAPICore({
+        request: 'GET',
+        url: ''
+    })
 
     const dataFrame = {
         columns: [],
@@ -16,22 +25,17 @@ export default function HomeStatsComponents(props) {
         JSON.parse(window.localStorage.getItem("chartData"))|| dataFrame    
     );
 
-    const fetchStatsData = () => {
-        fetch(`https://dash-formula-one-api.herokuapp.com/api/v1/stats/${props.id}/${props.session}`)
-            .then(res => res.json())
-            .then(data => setStatsProps(data))
-
-        fetch(`https://dash-formula-one-api.herokuapp.com/api/v1/stats/${props.id}-charts/${props.session}`)
-            .then(res => res.json())
-            .then(data => setChartData(data))
-    }
-
     React.useEffect(function() {
         // dash-formula-one-api.herokuapp.com/
         const dataSetOne = window.localStorage.setItem("statsData", JSON.stringify(statsProps))
         const dataSetTwo = window.localStorage.setItem("chartData", JSON.stringify(chartData))
-        if (!(dataSetOne && dataSetTwo))
-            fetchStatsData()
+        if (!(dataSetOne && dataSetTwo)) {
+            raceStatsAPI.url = url_tables
+            raceStatsAPI.getData().then(res => res.json()).then(data => setStatsProps(data))
+
+            raceStatsAPI.url = url_charts
+            raceStatsAPI.getData().then(res => res.json()).then(data => setChartData(data))
+        }
 
     }, [props.id]);
 

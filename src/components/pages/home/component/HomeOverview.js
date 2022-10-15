@@ -1,35 +1,45 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as Icons from '@fortawesome/free-solid-svg-icons';
+import { DashAPICore } from '../../../../service/api/utils/core';
 
 export default function HomeOverview({race_date}) {
+
+    const url_validate = `api/v1/utils/validate/${race_date}/gp-race-results-yearly`
+    const url_race_res = `api/v1/stats/gp-race-results-yearly/${race_date}`
+    const raceOverviewAPI = new DashAPICore({
+        request: 'GET',
+        url: ''
+    }) 
+
     const [validateRaceDate, setValidateRaceDate] = React.useState(false)
     const [driverWinningStat, setDriverWinningStats] = React.useState(
-        JSON.parse(window.localStorage.getItem("driverWinStats")) || [])
+        JSON.parse(window.localStorage.getItem("driverWinStats")) || []
+    )
     const [overviewTitle, setOverviewTitle] = React.useState(
-        JSON.parse(window.localStorage.getItem("title")) || {})
+        JSON.parse(window.localStorage.getItem("title")) || {}
+    )
 
     React.useEffect(function() {
-        // dash-formula-one-api.herokuapp.com
-        fetch(`https://dash-formula-one-api.herokuapp.com/api/v1/utils/validate/${race_date}/gp-race-results-yearly`)
-        .then(res => res.json())
-        .then(data => setValidateRaceDate(data[0]['_isexists']))
+        raceOverviewAPI.url = url_validate
+        raceOverviewAPI.getData()
+            .then(res => res.json())
+            .then(data => setValidateRaceDate(data[0]['_isexists']))
         
         if (validateRaceDate === true) {
             const frontRunnerDataOne = window.localStorage.setItem("driverWinStats", JSON.stringify(driverWinningStat))
             const frontRunnerDataTwo = window.localStorage.setItem("title", JSON.stringify(overviewTitle))
             if (!(frontRunnerDataOne && frontRunnerDataTwo)) {
-                fetch(`https://dash-formula-one-api.herokuapp.com/api/v1/stats/gp-race-results-yearly/${race_date}`)
-                .then(res => res.json())
-                .then(data => {
-                    setDriverWinningStats(data['front_runner_data']);
-                    setOverviewTitle(data['race_event_info'][0])
-                })
-            }
+                raceOverviewAPI.url = url_race_res
+                raceOverviewAPI.getData()
+                    .then(res => res.json())
+                    .then(data => {
+                        setDriverWinningStats(data['front_runner_data']);
+                        setOverviewTitle(data['race_event_info'][0])
+                    })
+                }
         }
     }, [validateRaceDate])
-
-    
     
   return (
     <section className='home-overview' id="overview">
